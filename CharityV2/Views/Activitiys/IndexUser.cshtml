@@ -1,0 +1,35 @@
+﻿@using CharityV2.Data
+@using Microsoft.AspNetCore.Identity
+@model IEnumerable<CharityV2.Data.User>
+@inject UserManager<User> UserManager
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                Име
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+       
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a asp-action="EditUser" asp-route-id="@item.Id">Set to Admin</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

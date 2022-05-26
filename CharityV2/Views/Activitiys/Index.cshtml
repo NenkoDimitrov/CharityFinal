@@ -1,0 +1,99 @@
+﻿@model IEnumerable<CharityV2.Data.Activity>
+
+@{
+    ViewData["Title"] = "Актуално";
+}
+
+<h1>Събития и дейности</h1>
+
+<p>
+    <a asp-action="Create">Подаване на заявка</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Име
+            </th>
+            
+            <th>
+                Описание
+            </th>
+            <th>
+               Местоположение
+            </th>
+            <th>
+                Начало
+            </th>
+            <th>
+                Край
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.RegistrationTime)
+            </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.CountInterest)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CountParticipants)
+            </th>*@
+           @* <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.User.Id)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Place)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.RegistrationTime)
+            </td>*@
+           @* <td>
+                @Html.DisplayFor(modelItem => item.CategoryId)
+            </td>*@
+            <td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id">Редактирай</a>
+                    }
+                    |<a asp-controller="Activitiys" asp-action="Details" asp-route-id="@item.Id">Допълнителна информация</a>|
+                    <a asp-controller="Activitiys" asp-action="Like" asp-route-id="@item.Id">Харесва ми</a>|
+                    <a asp-controller="Activitiys" asp-action="Participate" asp-route-id="@item.Id">Ще участвам</a>|
+                @if(User.IsInRole("Admin"))
+                {
+                <a asp-action="Delete" asp-route-id="@item.Id">Изтрий</a>
+                }|
+                @if(User.IsInRole("Admin"))
+                {
+                <a asp-controller="ActiveActivities" asp-action="Create" asp-route-idActivity="@item.Id">Одобрявам</a>
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
