@@ -17,14 +17,19 @@
             <th>
                 Име
             </th>
+            <th>
+                Роля
+            </th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-       
-            <td>
+       <td>
                 @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
             </td>
             <td>
                 <a asp-action="EditUser" asp-route-id="@item.Id">Set to Admin</a>

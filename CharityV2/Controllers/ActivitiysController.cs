@@ -11,6 +11,7 @@ using CharityV2.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using System.IO;
 
 namespace CharityV2.Controllers
 {
@@ -75,8 +76,17 @@ namespace CharityV2.Controllers
             {
                 return NotFound();
             }
+            var imagePath = Path.Combine(wwwroot, "Images");
+            ActivityDetailsVM modelVM = new ActivityDetailsVM();
 
-            return View(activitiy);
+            modelVM.Name = activitiy.Name;
+            modelVM.Place=activitiy.Place;
+            modelVM.Description = activitiy.Description;
+            modelVM.ImagePath = _context.ActivitiesImages.Where(x => x.ActivitiyId == activitiy.Id)
+                .Select(y=> $"/Images/{y.ImagePath}")
+                .ToList<string>();
+
+            return View(modelVM);
         }
 
         // GET: Activitiys/Create
@@ -218,19 +228,19 @@ namespace CharityV2.Controllers
 
             //var allActivities = await _context.Users
             //.ToListAsync();
-            var allActivities = await _userManager.Users.ToListAsync();
-            return View("IndexUser", allActivities);
+            var allUsers = await _userManager.Users.ToListAsync();
+            return View("IndexUser", allUsers);
             
         }
         public async Task<IActionResult> EditUser(string id)
         {
             //var activitiy = await _context.Users.FindAsync(id);
-            var activity = await _userManager.FindByIdAsync(id);
-            if (activity == null)
-            {
-                return NotFound();
-            }
-            await _userManager.AddToRoleAsync(activity, RoleType.Admin.ToString());
+            var user = await _userManager.FindByIdAsync(id);
+            var rolesr = await _userManager.AddToRoleAsync(user, RoleType.Admin.ToString());
+            user.Role=RoleType.Admin;
+
+            _context.Update(user);
+            _context.SaveChanges();
             return RedirectToAction("IndexUser");
         }
     }

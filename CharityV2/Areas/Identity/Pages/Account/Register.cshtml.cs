@@ -92,7 +92,8 @@ namespace CharityV2.Areas.Identity.Pages.Account
                     Name = Input.Name,
                     Familyname = Input.FamilyName,
                     Email = Input.Email,
-                    PhoneNumber = Input.PhoneNumber
+                    PhoneNumber = Input.PhoneNumber,
+                    Role=RoleType.User
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)

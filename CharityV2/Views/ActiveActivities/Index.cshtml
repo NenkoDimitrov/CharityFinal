@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Отоговорници</h1>
 
 
 <table class="table">
@@ -12,6 +12,12 @@
         <tr>
             <th>
                 Отговорник
+            </th>
+             <th>
+                Email
+            </th>
+            <th>
+                Телефон
             </th>
             <th>
                 Събитие
@@ -23,14 +29,18 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.User.Name)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.User.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.PhoneNumber)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Activitiy.Name)
             </td>
-            <td>
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+           
         </tr>
 }
     </tbody>

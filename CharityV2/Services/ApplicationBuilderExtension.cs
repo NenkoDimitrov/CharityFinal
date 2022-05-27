@@ -56,7 +56,8 @@ namespace CharityV2.Services
                 Familyname = "Dimitrov",
                 PhoneNumber = "0899999999",
                 EmailConfirmed = true,
-                PhoneNumberConfirmed = true
+                PhoneNumberConfirmed = true,
+                Role=RoleType.Admin
             };
 
             var user = await userManager.FindByEmailAsync(defaultUser.Email);

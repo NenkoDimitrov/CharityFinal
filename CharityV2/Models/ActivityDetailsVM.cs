@@ -1,5 +1,4 @@
 ﻿using CharityV2.Data;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
@@ -7,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CharityV2.Models
 {
-    public class ActivityVM
+    public class ActivityDetailsVM
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -24,8 +23,6 @@ namespace CharityV2.Models
         public int CountInterest { get; set; }
         public int CountParticipants { get; set; }
         public StatusType Status { get; set; }
-
-        [Required(ErrorMessage = "Избери снимка от компютъра си...")]
-        public List<IFormFile> ImagePath { get; set; }
+        public List<string> ImagePath { get; set; }
     }
 }
