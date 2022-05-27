@@ -52,23 +52,17 @@ namespace CharityV2.Controllers
             return View(activeActivity);
         }
 
-        // GET: ActiveActivities/Create
-        //public IActionResult Create()///nqma da trqbva
-        //{
-        //    ViewData["ActivitiyId"] = new SelectList(_context.Activitiys, "Id", "Id");
-        //    //ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
-        //    return View();
-        //}
+      
 
         // POST: ActiveActivities/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int idActivity)//, [Bind("Id,UserId,ActivitiyId")] ActiveActivity activeActivity)
+        public async Task<IActionResult> Create(int idActivity)
         {
 
-            var currentUser = _userManager.GetUserId(User); //Employee to activ
+            var currentUser = _userManager.GetUserId(User); 
             ActiveActivity modelToDb = new ActiveActivity()
             {
                 ActivitiyId = idActivity,
@@ -84,12 +78,8 @@ namespace CharityV2.Controllers
 
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Details", "Activitiys", new { id = idActivity });
-            //if (!ModelState.IsValid)
-            //{
-            //    ViewData["ActivitiyId"] = new SelectList(_context.Activitiys, "Id", "Id", activeActivity.ActivitiyId);
-            //    return View(activeActivity);
-            //}
+            return RedirectToAction("Index", "Activitiys", new { id = idActivity });
+         
 
         }
 

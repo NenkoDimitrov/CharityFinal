@@ -12,73 +12,61 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.User)
+            Потребител
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.User.Email)
         </dd class>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            Име
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        @*<dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EmployeeId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EmployeeId)
-        </dd>*@
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
+            Описание
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Place)
+            Местоположение
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Place)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StartDate)
+           Начало
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.StartDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EndDate)
+            Край
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.EndDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RegistrationTime)
+            Време на регистриране
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.RegistrationTime)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CategoryId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CountInterest)
+            Брой интересуващи се
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.CountInterest)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CountParticipants)
+           Брой участващи
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.CountParticipants)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Status)
+            Статус
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Status)
@@ -88,6 +76,6 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <a asp-action="Index">Back</a>
     </form>
 </div>
