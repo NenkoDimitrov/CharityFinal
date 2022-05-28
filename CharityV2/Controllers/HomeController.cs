@@ -29,8 +29,7 @@ namespace CharityV2.Controllers
         {
             if (User.IsInRole("Admin"))
             {
-                //var allUsersList =  _context.Users.ToList();
-                //return View("AddRoleEmployee", allUsersList);
+               
                 var listActiveActivities = _context.ActiveActivities.ToList();
                 return View(listActiveActivities);
             }
@@ -41,7 +40,7 @@ namespace CharityV2.Controllers
         [Authorize(Roles="Admin")]
         public IActionResult SetEmployee(string id)
         {
-            //set Role EMPL
+          
             return View();
         }
 

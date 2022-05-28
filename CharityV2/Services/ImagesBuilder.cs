@@ -11,7 +11,6 @@ namespace CharityV2.Services
     public class ImagesBuilder
     {
         private readonly ApplicationDbContext _context;
-       // private readonly UserManager<User> _userManager;
         private readonly IWebHostEnvironment _hostEnvironment;
         private string wwwroot;
 
@@ -19,11 +18,10 @@ namespace CharityV2.Services
         {
             _context = context;
             _hostEnvironment = hostEnvironment;
-           // _userManager = userManager;
             wwwroot = $"{this._hostEnvironment.WebRootPath}";
         }
         
-        ///
+    
         public async Task CreateImages(ActivityVM model, string currentUser)
         {
             
@@ -44,7 +42,7 @@ namespace CharityV2.Services
             await _context.Activitiys.AddAsync(modelToDb);
             await this._context.SaveChangesAsync();
 
-            //създаваме папката images, ако не съществува
+            
             Directory.CreateDirectory($"{wwwroot}/Images/");
             var imagePath = Path.Combine(wwwroot, "Images");
             string uniqueFileName = null;
@@ -56,7 +54,7 @@ namespace CharityV2.Services
                     {
                         ActivitiyId = modelToDb.Id,
                         Activitiy = modelToDb
-                    };//id се създава автоматично при създаване на обект
+                    };
                     if (model.ImagePath[i] != null)
                     {
                         uniqueFileName = dbImage.Id + "_" + model.ImagePath[i].FileName;

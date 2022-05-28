@@ -13,7 +13,7 @@ namespace CharityV2.Data
         public string Id { get; set; }
         [Required]
         public string ImagePath { get; set; }
-        //wrazka M:1
+     
         [Required]
         public int ActivitiyId { get; set; }
         public Activity Activitiy { get; set; }

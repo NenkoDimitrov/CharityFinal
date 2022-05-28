@@ -31,7 +31,6 @@ namespace CharityV2.Controllers
 
         }
 
-        // GET: Activitiys
         public async Task<IActionResult> Index(int idCategory)
         {
             if (idCategory==0)
@@ -60,7 +59,6 @@ namespace CharityV2.Controllers
             return Content("Error from Activitys Index");
         }
 
-        // GET: Activitiys/Details/5
         [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
@@ -89,7 +87,6 @@ namespace CharityV2.Controllers
             return View(modelVM);
         }
 
-        // GET: Activitiys/Create
         [Authorize]
         public IActionResult Create()
         {
@@ -97,9 +94,6 @@ namespace CharityV2.Controllers
             return View();
         }
 
-        // POST: Activitiys/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([FromForm] ActivityVM activitiy)
@@ -116,7 +110,6 @@ namespace CharityV2.Controllers
             return RedirectToAction("Index", new { idCategory = activitiy.CategoryId });
         }
 
-        // GET: Activitiys/Edit/5
         [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -133,9 +126,6 @@ namespace CharityV2.Controllers
             return View(activitiy);
         }
 
-        // POST: Activitiys/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, int userCounter, [Bind("Id,UserId,Name,EmployeeId,Description,Place,Start,End,RedistrationTime,CategoryId,CountInterest,CountParticipants,Status")] Activity activitiy)
@@ -169,7 +159,6 @@ namespace CharityV2.Controllers
             return View(activitiy);
         }
 
-        // GET: Activitiys/Delete/5
         [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
@@ -189,7 +178,6 @@ namespace CharityV2.Controllers
             return View(activitiy);
         }
 
-        // POST: Activitiys/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -226,15 +214,14 @@ namespace CharityV2.Controllers
         public async Task<IActionResult> IndexUser()
         {
 
-            //var allActivities = await _context.Users
-            //.ToListAsync();
+           
             var allUsers = await _userManager.Users.ToListAsync();
             return View("IndexUser", allUsers);
             
         }
         public async Task<IActionResult> EditUser(string id)
         {
-            //var activitiy = await _context.Users.FindAsync(id);
+            
             var user = await _userManager.FindByIdAsync(id);
             var rolesr = await _userManager.AddToRoleAsync(user, RoleType.Admin.ToString());
             user.Role=RoleType.Admin;

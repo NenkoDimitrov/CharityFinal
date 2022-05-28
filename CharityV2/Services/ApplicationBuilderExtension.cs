@@ -24,9 +24,8 @@ namespace CharityV2.Services
                 var context = services.GetRequiredService<ApplicationDbContext>();
                 var userManager = services.GetRequiredService<UserManager<User>>();
                 var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-                //Sazdavane na roles
+           
                 await SeedRolesAsync(roleManager);
-                //sazdavane na SUPER ADMIN s vsi4kite mu roli
                 await SeedSuperAdminAsync(userManager);
             }
             catch (Exception ex)
@@ -39,7 +38,7 @@ namespace CharityV2.Services
         }
         public static async Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
         {
-            //Seed Roles
+
             await roleManager.CreateAsync(new IdentityRole(RoleType.Admin.ToString()));
             await roleManager.CreateAsync(new IdentityRole(RoleType.User.ToString()));
             await roleManager.CreateAsync(new IdentityRole(RoleType.Employee.ToString()));
@@ -47,7 +46,7 @@ namespace CharityV2.Services
 
         public static async Task SeedSuperAdminAsync(UserManager<User> userManager)
         {
-            //Seed Default User
+            
             var defaultUser = new User
             {
                 UserName = "superadmin",

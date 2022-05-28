@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,7 +22,7 @@ namespace CharityV2.Controllers
             _userManager = userManager;
         }
 
-        // GET: ActiveActivities
+       
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
@@ -32,7 +32,7 @@ namespace CharityV2.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: ActiveActivities/Details/5
+     
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -54,11 +54,7 @@ namespace CharityV2.Controllers
 
       
 
-        // POST: ActiveActivities/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
+      
         public async Task<IActionResult> Create(int idActivity)
         {
 
