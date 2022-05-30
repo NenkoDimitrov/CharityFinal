@@ -23,7 +23,7 @@ namespace CharityV2.Controllers
         }
 
        
-        [Authorize(Roles = "Admin")]
+      
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.ActiveActivities

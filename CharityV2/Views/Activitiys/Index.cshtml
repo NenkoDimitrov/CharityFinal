@@ -21,7 +21,7 @@
                 Описание
             </th>
             <th>
-                Местоположение
+                Местоположение/Място за изпращане на средства
             </th>
             <th>
                 Начало
@@ -60,9 +60,9 @@
                         <a asp-action="Delete" asp-route-id="@item.Id">Изтрий</a> <br> 
                         <a asp-controller="ActiveActivities" asp-action="Create" asp-route-idActivity="@item.Id">Одобрявам</a><br>
                     }
-                    <a asp-controller="Activitiys" asp-action="Details" asp-route-id="@item.Id">Допълнителна информация</a><br>
+                    <a asp-controller="Activitiys" asp-action="Details" asp-route-id="@item.Id">Преглед</a><br>
                     <a asp-controller="Activitiys" asp-action="Like" asp-route-id="@item.Id">Харесва ми</a><br>
-                    <a asp-controller="Activitiys" asp-action="Participate" asp-route-id="@item.Id">Ще участвам</a><br>
+                    <a asp-controller="Activitiys" asp-action="Participate" asp-route-id="@item.Id">Участвай</a><br>
 
                 </td>
             </tr>
